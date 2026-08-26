@@ -106,12 +106,12 @@ for i in range(30):
     ret, frame = cap.read()
 
 last_err = 0
-ped_log_state_prev = None
-last_ped = 0
+#ped_log_state_prev = None
+#last_ped = 0
 while True:
     start_time = time.time()
     ret, frame = cap.read()
-    end_frame = time.time()
+    #end_frame = time.time()
     if not ret:
         break
 

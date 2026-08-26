@@ -1,0 +1,1 @@
+файл Bazovyi_kod/Arduino_A26.py
