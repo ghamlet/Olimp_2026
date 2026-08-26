@@ -1,0 +1,7 @@
+path: /home/arrma/Documents/Olimp_2026/user_task_drones/images/YOLODataset
+train: images/train
+val: images/val
+test:
+
+names:
+    0: drone

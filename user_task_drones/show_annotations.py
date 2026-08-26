@@ -1,13 +1,12 @@
-import csv
-import os
-import sys
 
 import cv2
-
-CSV_PATH = "annotations.csv"
+import pandas as pd
 
 
 def yolo_to_pixel(xc, yc, w, h, img_w, img_h):
+    """Конвертация YOLO-формата (нормализованные координаты) в пиксели.
+    YOLO: (xc, yc) - центр бокса, (w, h) - ширина/высота, все в диапазоне [0, 1].
+    Возвращает: (x1, y1, x2, y2) - углы бокса в пикселях."""
     x1 = int(round((xc - w / 2) * img_w))
     y1 = int(round((yc - h / 2) * img_h))
     x2 = int(round((xc + w / 2) * img_w))
@@ -16,42 +15,41 @@ def yolo_to_pixel(xc, yc, w, h, img_w, img_h):
 
 
 def main():
-    show = len(sys.argv) < 2 or sys.argv[1] != "--no-show"
 
-    boxes = {}
-    with open(CSV_PATH, newline="") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            img_path = row["image"].strip()
-            xc, yc, w, h = map(float, (row["x"], row["y"], row["w"], row["h"]))
-            boxes.setdefault(img_path, []).append((xc, yc, w, h))
+    csv_file = "annotations.csv"
+    data = pd.read_csv(csv_file, sep=',')
+    # Перемешиваем данные для случайного порядка отображения
+    data = data.sample(frac=1)
 
-    for img_path, objects in boxes.items():
-        src = img_path if os.path.exists(img_path) else os.path.join("images", os.path.basename(img_path))
-        img = cv2.imread(src)
+    # Формат CSV: image, x, y, w, h (координаты в YOLO-формате)
+    for row in data.itertuples():
+        _, img_path, xc, yc, w, h = row
+        xc, yc, w, h = map(float, [xc, yc, w, h])
+
+        img = cv2.imread(img_path)
         if img is None:
             print(f"skip {img_path}: cannot read")
             continue
-        img_h, img_w = img.shape[:2]
 
-        for i, (xc, yc, w, h) in enumerate(objects):
-            x1, y1, x2, y2 = yolo_to_pixel(xc, yc, w, h, img_w, img_h)
-            cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
-            cv2.circle(img, (x1, y1), 4, (0, 0, 255), -1)
-            cv2.circle(img, (x2, y2), 4, (255, 0, 0), -1)
-            cv2.putText(img, f"{i + 1}: drone", (x1, max(y1 - 6, 12)),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 
-        name = os.path.basename(img_path)
-        print(f"{img_path}: {len(objects)} obj")
+        img_h, img_w = img.shape[:2]  # п
 
-        if show:
-            cv2.imshow("annotation", img)
-            if cv2.waitKey(0) & 0xFF == ord("q"):
-                show = False
-                cv2.destroyAllWindows()
+        # Рисуем bounding box и метки
+        x1, y1, x2, y2 = yolo_to_pixel(xc, yc, w, h, img_w, img_h)
+        cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)  # зеленый прямоугольник
+        cv2.circle(img, (x1, y1), 4, (0, 0, 255), -1)  # красная точка - верхний левый угол
+        cv2.circle(img, (x2, y2), 4, (255, 0, 0), -1)  # синяя точка - нижний правый угол
+        cv2.putText(img, "drone", (x1, max(y1 - 6, 12)),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 
-    cv2.destroyAllWindows()
+        print(f"{img_path}: 1 obj")
+
+        # Показываем изображение и ждем нажатия клавиши (q - выход)
+    
+        cv2.imshow("annotation", img)
+        if cv2.waitKey(0) & 0xFF == ord("q"):
+            cv2.destroyAllWindows()
+
 
 
 if __name__ == "__main__":
