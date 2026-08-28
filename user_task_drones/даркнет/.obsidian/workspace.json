@@ -1,0 +1,225 @@
+{
+  "main": {
+    "id": "54de7673e8b6c497",
+    "type": "split",
+    "children": [
+      {
+        "id": "bcb382d2e92e5144",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ce8293c11de03b61",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "6. ультралитикс.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "6. ультралитикс"
+            }
+          },
+          {
+            "id": "145da51e9145635e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "7. конвертация модели даркнет.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "7. конвертация модели даркнет"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "79755187e50b8989",
+    "type": "split",
+    "children": [
+      {
+        "id": "3b713cd5235f0ae7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3a08206685ae5ab5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "c97e16df1b774611",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "d6fcccd77ff408e2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bb5a40f0fce60f35",
+    "type": "split",
+    "children": [
+      {
+        "id": "4522a2e1fd9ab12b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c29e16c977b0034f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "7. конвертация модели даркнет.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "05acd2bd42e79ebd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "7. конвертация модели даркнет.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "46f1d81a7392569c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "a31637653c6361b7",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "73bef573429ebbd5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "7. конвертация модели даркнет.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "145da51e9145635e",
+  "lastOpenFiles": [
+    "6. ультралитикс.md",
+    "7. конвертация модели даркнет.md",
+    "5. даркнет.md",
+    "4.  гугл диск и колаб.md",
+    "images/Pasted image 20260826145409.png",
+    "images/Pasted image 20260826145214.png",
+    "images/Pasted image 20260826144820.png",
+    "images/Pasted image 20260826144617.png",
+    "3. сбор датасета.md",
+    "images/Pasted image 20260826143739.png",
+    "images/Pasted image 20260826143713.png",
+    "images/Pasted image 20260826143611.png",
+    "images/Pasted image 20260826143542.png",
+    "images/Pasted image 20260826143510.png",
+    "images/Pasted image 20260826142737.png",
+    "1. база про нейронки.md"
+  ]
+}

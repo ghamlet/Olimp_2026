@@ -25,14 +25,17 @@ from road_utils import *
     анализ результатов работы детектора.
 
 """
+
+# Меняем только эти параметры
     
 BASE_SPEED = 1570    # базовая скорость движения по прямой линии
 TURN_SPEED = 1575          # скорость в поворотах, когда колёса вывернуты за пределы зоны прямой
-ANGLE_TOLERANCE = 20  # допуск зоны прямой: |angle - 90| <= ANGLE_TOLERANCE
 THRESHOLD = 250  # порог бинаризации для поиска линий разметки
 CAMERA_ID = '/dev/video0'
-# ARDUINO_PORT = 'COM3'
-# ARDUINO_PORT = '/dev/ttyS0'
+
+#------------------------------------------------------------------------
+
+
 ARDUINO_PORT = '/dev/ttyUSB0'
 
 GO = 'GO'
@@ -42,6 +45,8 @@ STATE = GO
 PREV_STATE = None
 PREV_SUBSTATE = None
 SUBSTATE = None
+
+ANGLE_TOLERANCE = 20  # допуск зоны прямой: |angle - 90| <= ANGLE_TOLERANCE
 
 
 arduino = None
@@ -61,33 +66,31 @@ arduino = Arduino(ARDUINO_PORT)
 print("Arduino connected")
 
 
-def speed_input():
-    """Фоновый поток: позволяет менять каждую скорость на ходу, не останавливая программу.
-
-    Формат ввода:
-    '<значение>'        — базовая скорость по прямой (BASE_SPEED), например: 1560
-    '2 <значение>'      — скорость в поворотах (TURN_SPEED), например: 2 1530
-    """
-    global BASE_SPEED, TURN_SPEED
-    while True:
-        s = input('Скорость: число — прямая, "2 число" — поворот: ').strip()
-        if not s:
-            continue
-        parts = s.split()
-        try:
-            if len(parts) == 1:  # введено только число - меняем скорость по прямой
-                BASE_SPEED = int(parts[0])
-                print(f'BASE_SPEED = {BASE_SPEED}')
-            elif len(parts) == 2 and parts[0] == '2':  # префикс "2" - скорость в поворотах
-                TURN_SPEED = int(parts[1])
-                print(f'TURN_SPEED = {TURN_SPEED}')
-            else:
-                print('Неверный формат! Примеры: "1560" или "2 1530"')
-        except ValueError:
-            print('Введите целое число!')
+#def speed_input():
+   
+#    global BASE_SPEED, TURN_SPEED
+#    while True:
+#        s = input('Скорость: число — прямая, "2 число" — поворот: ').strip()
+#        if not s:
+#            continue
+#        parts = s.split()
+#        try:
+#            if len(parts) == 1:  # введено только число - меняем скорость по прямой
+#                BASE_SPEED = int(parts[0])
+#                print(f'BASE_SPEED = {BASE_SPEED}')
+#            elif len(parts) == 2 and parts[0] == '2':  # префикс "2" - скорость в поворотах
+#                TURN_SPEED = int(parts[1])
+#                print(f'TURN_SPEED = {TURN_SPEED}')
+#            else:
+#                print('Неверный формат! Примеры: "1560" или "2 1530"')
+#        except ValueError:
+#            print('Введите целое число!')
 
 
-threading.Thread(target=speed_input, daemon=True).start()
+#threading.Thread(target=speed_input, daemon=True).start()
+
+
+
 
 # астраиваем камеру
 cap = cv2.VideoCapture(CAMERA_ID, cv2.CAP_V4L2)
@@ -106,21 +109,24 @@ for i in range(30):
     ret, frame = cap.read()
 
 last_err = 0
-#ped_log_state_prev = None
-#last_ped = 0
+
 while True:
     start_time = time.time()
     ret, frame = cap.read()
-    #end_frame = time.time()
     if not ret:
         break
 
-    frame = frame[-720:, :]  # для поиска разметки весь кадр не нужен
+    # Сохраняем оригинально изображение для дальнейшей обработки
+
     orig_frame = frame.copy()
+
+
+    
+    frame = frame[-720:, :]  # для поиска разметки весь кадр не нужен
+    
     frame = cv2.resize(frame, SIZE)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  # Переводим изображение в чёрно-белое с градациями серого
     bin = cv2.inRange(gray, THRESHOLD, 255)  # Бинаризуем по порогу, должны остаться только белые линии разметки
-    # bin = binarize(frame, THRESHOLD)
 
     wrapped = trans_perspective(bin, TRAP, RECT, SIZE)  # получаем область перед колёсами
     left, right = find_lines(wrapped)  # координаты левой и правой линий разметки
