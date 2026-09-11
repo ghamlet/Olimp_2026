@@ -4,25 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "bcb382d2e92e5144",
+        "id": "95a67bd97554bd1c",
         "type": "tabs",
         "children": [
           {
-            "id": "ce8293c11de03b61",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "6. ультралитикс.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "6. ультралитикс"
-            }
-          },
-          {
-            "id": "145da51e9145635e",
+            "id": "e313c9657ea84966",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -35,8 +21,7 @@
               "title": "7. конвертация модели даркнет"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -203,23 +188,42 @@
       "bases:Create new base": false
     }
   },
-  "active": "145da51e9145635e",
+  "active": "3a08206685ae5ab5",
   "lastOpenFiles": [
+    "Untitled",
+    "convert_models/stage5_vm_test/test_clip_250f.avi",
+    "convert_models/stage3_tflite_int8_dr/output_int8_dr_tfconv/yolov4_1_3_416_416_static_dynamic_range_quant.tflite",
+    "convert_models/stage3_tflite_int8_dr/output_int8_dr_tfconv/yolov4_1_3_416_416_static_float16.tflite",
+    "convert_models/stage3_tflite_int8_dr/output_int8_dr_tfconv/schema.fbs",
+    "convert_models/stage3_tflite_int8_dr/output_int8_dr_tfconv/schema_generated.py",
+    "convert_models/stage3_tflite_int8_dr/output_int8_dr_tfconv/yolov4_1_3_416_416_static_float32.tflite",
+    "convert_models/stage3_tflite_int8_dr/output_int8_dr_tfconv/fingerprint.pb",
+    "convert_models/stage3_tflite_int8_dr/output_int8_dr_tfconv/saved_model.pb",
+    "convert_models/stage3_tflite_int8_dr/output_int8_dr_tfconv/assets",
+    "convert_models/stage3_tflite_int8_dr/output_int8_dr_tfconv/variables/variables.index",
+    "convert_models/venv_tflite/lib/python3.12/site-packages/werkzeug/debug/shared/more.png",
+    "convert_models/venv_tflite/lib/python3.12/site-packages/werkzeug/debug/shared/less.png",
+    "convert_models/venv_tflite/lib/python3.12/site-packages/werkzeug/debug/shared/console.png",
+    "convert_models/venv_tflite/lib/python3.12/site-packages/werkzeug/debug/shared/ICON_LICENSE.md",
+    "convert_models/venv_tflite/lib/python3.12/site-packages/idna-3.19.dist-info/licenses/LICENSE.md",
+    "convert_models/venv_tflite/lib/python3.12/site-packages/markdown-3.10.3.dist-info/licenses/LICENSE.md",
+    "convert_models/venv_tflite/lib/python3.12/site-packages/numpy/random/LICENSE.md",
+    "convert_models/venv_tflite/lib/python3.12/site-packages/pip-26.2.1.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
     "6. ультралитикс.md",
     "7. конвертация модели даркнет.md",
     "5. даркнет.md",
-    "4.  гугл диск и колаб.md",
-    "images/Pasted image 20260826145409.png",
-    "images/Pasted image 20260826145214.png",
-    "images/Pasted image 20260826144820.png",
-    "images/Pasted image 20260826144617.png",
     "3. сбор датасета.md",
-    "images/Pasted image 20260826143739.png",
-    "images/Pasted image 20260826143713.png",
-    "images/Pasted image 20260826143611.png",
-    "images/Pasted image 20260826143542.png",
-    "images/Pasted image 20260826143510.png",
-    "images/Pasted image 20260826142737.png",
-    "1. база про нейронки.md"
+    "2. про архитектуру yolo.md",
+    "1. база про нейронки.md",
+    "images/Pasted image 20260829163158.png",
+    "images/Pasted image 20260829162902.png",
+    "images/Pasted image 20260829162353.png",
+    "images/Pasted image 20260829162300.png",
+    "images/Pasted image 20260829162211.png",
+    "venv_ultralytics/lib/python3.8/site-packages/ultralytics/assets/zidane.jpg",
+    "venv_ultralytics/lib/python3.8/site-packages/ultralytics/assets/bus.jpg",
+    "venv_ultralytics/lib/python3.8/site-packages/scipy/fft/_pocketfft/LICENSE.md",
+    "venv_ultralytics/lib/python3.8/site-packages/idna-3.4.dist-info/LICENSE.md",
+    "4.  гугл диск и колаб.md"
   ]
 }
