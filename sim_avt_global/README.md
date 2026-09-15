@@ -9,15 +9,15 @@ https://sim.avt.global/public/
 
 Поток вывода:
 
-![](images/Pasted_image_20260911030329.png)
+![](<images/Pasted_image_20260911030329.png>)
 
 либо
 
-![](images/Pasted_image_20260911030429.png)
+![](<images/Pasted_image_20260911030429.png>)
 
 Поток ошибок:
 
-![](images/Pasted_image_20260911030340.png)
+![](<images/Pasted_image_20260911030340.png>)
 
 Для тестов рассмотрел задачу
 ## Обнаружение автомобилей
