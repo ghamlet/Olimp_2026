@@ -3,33 +3,23 @@
 python3 -c '
 import os, re, urllib.parse
 
-def convert_clean_spaces(text):
-    # 1. Вики-картинки -> ![](path/file name.png)
+def remove_exclamation(text):
+    # 1. Вики-вставки ![[path/file.png|Alt]] -> [Alt](path/file.png)
     def img_wiki_repl(match):
-        path = match.group(1).strip()
-        alt = match.group(2) if match.group(2) else ""
-        path = urllib.parse.unquote(path).strip("<>")
-        return f"![{alt}]({path})"
-
-    # 2. Вики-заметки -> [Label](path/note name.md)
-    def doc_wiki_repl(match):
         path = match.group(1).strip()
         label = match.group(2) if match.group(2) else path.split("/")[-1]
         path = urllib.parse.unquote(path).strip("<>")
-        if "." not in path.split("/")[-1]:
-            path += ".md"
         return f"[{label}]({path})"
 
-    # 3. Чистка ссылок (убираем <> и %20)
-    def md_clean(match):
-        prefix = match.group(1)
+    # 2. Обычные Markdown-картинки ![alt](path) -> [alt](path)
+    def md_img_repl(match):
+        alt = match.group(1)
         path = match.group(2).strip().strip("<>")
         path = urllib.parse.unquote(path)
-        return f"{prefix}({path})"
+        return f"[{alt}]({path})"
 
     text = re.sub(r"!\[\[([^\|\]]+)(?:\|([^\]]+))?\]\]", img_wiki_repl, text)
-    text = re.sub(r"(?<!\!)\[\[([^\|\]]+)(?:\|([^\]]+))?\]\]", doc_wiki_repl, text)
-    text = re.sub(r"(!?\[.*?\])\((.*?)\)", md_clean, text)
+    text = re.sub(r"!\[(.*?)\]\((.*?)\)", md_img_repl, text)
     return text
 
 updated_files = 0
@@ -43,7 +33,7 @@ for root, _, files in os.walk("."):
                 with open(filepath, "r", encoding="utf-8") as f:
                     content = f.read()
                 
-                new_content = convert_clean_spaces(content)
+                new_content = remove_exclamation(content)
                 
                 if new_content != content:
                     with open(filepath, "w", encoding="utf-8") as f:
@@ -53,5 +43,5 @@ for root, _, files in os.walk("."):
             except Exception as e:
                 print(f"[!] Ошибка {filepath}: {e}")
 
-print(f"\nГотово! Обновлено файлов: {updated_files}")
+print(f"\nГотово! Восклицательные знаки выпилены. Обновлено файлов: {updated_files}")
 '
